@@ -1,0 +1,35 @@
+﻿@model TopCoderTool.Models.TopUserViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+   <table>
+       <thead>
+           <tr>
+              <td width="100px">Rank#</td>
+              <td width="150px">Handle</td>
+              <td width="120px">Rating</td>
+              <td width="300px">Country</td>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach(var user in Model.topUsers.OrderBy(x=>x.rank) )
+           {
+               <tr>
+                   <td>@user.rank</td>
+                   <td>@user.handle</td>
+                   <td>@user.rating</td>
+                   @if (@user.country.Length == 0)
+                   {
+                       <td>(N/A)</td>
+                   }
+                   else
+                   {
+                       <td>@user.country</td>
+                   }
+               </tr>
+           }
+       </tbody>
+   </table>
+</div>
